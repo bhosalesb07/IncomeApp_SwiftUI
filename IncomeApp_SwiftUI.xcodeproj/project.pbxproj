@@ -16,6 +16,8 @@
 		042B61262EA3EA3400D41ADC /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B61252EA3EA3400D41ADC /* TransactionType.swift */; };
 		042B61282EA3F1DB00D41ADC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042B61272EA3F1DB00D41ADC /* Colors.xcassets */; };
 		04845A632EA4A6E600A3CDFE /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A622EA4A6E600A3CDFE /* AddTransactionView.swift */; };
+		04845A892EA5528B00A3CDFE /* SettingVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A882EA5528B00A3CDFE /* SettingVIew.swift */; };
+		04845A8B2EA552DA00A3CDFE /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845A8A2EA552DA00A3CDFE /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		042B61252EA3EA3400D41ADC /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		042B61272EA3F1DB00D41ADC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		04845A622EA4A6E600A3CDFE /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		04845A882EA5528B00A3CDFE /* SettingVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVIew.swift; sourceTree = "<group>"; };
+		04845A8A2EA552DA00A3CDFE /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				042B61222EA3E9A600D41ADC /* Model */,
 				042B61132EA3E92A00D41ADC /* IncomeApp_SwiftUIApp.swift */,
 				042B61152EA3E92A00D41ADC /* HomeView.swift */,
+				04845A882EA5528B00A3CDFE /* SettingVIew.swift */,
+				04845A8A2EA552DA00A3CDFE /* CurrencyModel.swift */,
 				042B61272EA3F1DB00D41ADC /* Colors.xcassets */,
 				042B61172EA3E92E00D41ADC /* Assets.xcassets */,
 				042B61192EA3E92E00D41ADC /* IncomeApp_SwiftUI.entitlements */,
@@ -173,9 +179,11 @@
 			files = (
 				042B61262EA3EA3400D41ADC /* TransactionType.swift in Sources */,
 				042B61242EA3E9BF00D41ADC /* TransactionModel.swift in Sources */,
+				04845A8B2EA552DA00A3CDFE /* CurrencyModel.swift in Sources */,
 				040BCFFB2EA48D5300F7D5D9 /* TransactionView.swift in Sources */,
 				04845A632EA4A6E600A3CDFE /* AddTransactionView.swift in Sources */,
 				042B61162EA3E92A00D41ADC /* HomeView.swift in Sources */,
+				04845A892EA5528B00A3CDFE /* SettingVIew.swift in Sources */,
 				042B61142EA3E92A00D41ADC /* IncomeApp_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,18 @@ struct HomeView: View {
     
     @State private var showAddTransactionView:Bool = false
     @State private var transactiontoEdit:Transaction?
+    @State private var showSettings = false
+
+    @AppStorage("orderDescending") var orderDescending = false
+    @AppStorage("filterMinimum") var filterMinimum = 0.0
+    @AppStorage("currency") var currency = Currency.usd
+    
+    private var displayTransactions: [Transaction] {
+        let sortedTransactions = orderDescending ? transactions.sorted(by: { $0.date < $1.date }) : transactions.sorted(by: { $0.date > $1.date })
+        let filteredTransactions = sortedTransactions.filter({ $0.amount > filterMinimum })
+
+        return filteredTransactions
+    }
     
   private var expenses :String{
 //        var sumExpenses:Double = 0
@@ -24,6 +36,7 @@ struct HomeView: View {
         let sumExpenses = transactions.filter({ $0.type == .expense }).reduce(0, {$0 + $1.amount})
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
+      numberFormatter.locale = currency.locale
         return numberFormatter.string(from: sumExpenses as NSNumber) ?? "$0.00"
     }
     
@@ -37,6 +50,7 @@ struct HomeView: View {
         let sumImcomes = transactions.filter({ $0.type == .income }).reduce(0, {$0 + $1.amount})
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
+        numberFormatter.locale = currency.locale
         return numberFormatter.string(from: sumImcomes as NSNumber) ?? "$ 0.00"
     }
     
@@ -57,6 +71,7 @@ struct HomeView: View {
        total = sumImcomes - sumExpenses
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
+       numberFormatter.locale = currency.locale
         return numberFormatter.string(from: total as NSNumber) ?? "$0.00"
     }
     fileprivate func FloatingButton() -> some View{
@@ -129,7 +144,7 @@ struct HomeView: View {
                 VStack{
                     BalanceView()
                     List{
-                        ForEach(transactions) { transaction in
+                        ForEach(displayTransactions) { transaction in
                             NavigationLink(destination: AddTransactionView(
                                 transactions: $transactions,
                                 transactionToEdit: transaction)
@@ -148,7 +163,7 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        showSettings = true
                     } label: {
                         Image(systemName: "gearshape.fill")
                             .foregroundStyle(.black)
@@ -159,7 +174,9 @@ struct HomeView: View {
             .navigationDestination(for: Transaction.self, destination: { transactionToEdit in
                 AddTransactionView(transactions: $transactions, transactionToEdit: transactionToEdit)
             })
-            
+            .sheet(isPresented: $showSettings) {
+                SettingVIew()
+            }
         }
     }
     private func delete(at offsets:IndexSet){
